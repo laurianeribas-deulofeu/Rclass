@@ -19,7 +19,7 @@ xfun::embed_file('environment.R')
 xfun::embed_file('Data/reef_fish.xlsx')
 ```
 
-Practice 1.3 - Lauriane Bis
+Practice 1.3 - Lauriane 09/19/2022
 
 # R Software
 
