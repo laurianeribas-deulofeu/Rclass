@@ -1,0 +1,17 @@
+---
+title: "Practice 2.2 (10/4)"
+author: "Lauriane Ribas-Deulofeu"
+date: "2022-09-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Due date: before October 4th class
+Exercise:
+
+Use data set rairuoho. It provides 8 days length data of Easter grass exposed to different treatments. The 6 variables day3 to day8 are mean length of the grass at the given day. germinate is the no. of germinated seeds.bed is a factor with four levels (mould1,mould2, paper4, paper8) indicating where the grass was growing and thickness. treatement has two levels water and nutrient indicating watering scheme (pure water or enriched with nutrients). spatial1 and spatial2 are the vertical and horizontal position of the plot, respectively. The variable row and column are meaningless should be removed.
+
+<b>Instruction:</b> within the variable treatement, nutrient is misleading because it is water enriched with nutrient. Replace nutrient with enriched in the data set. Reformat the table in order to have the day as a single variable (factor) containing 6 levels (day3, day4, day5, day6, day7, day8). Another variable length will be created to receive the length of the grass at the given day. Merge variables Spatial1 and Spatial2 in order to obtain the following format for the spatial coordinates of an observation upper_left. Remove variables row and column. This homework must be prepared in .Rmd format that you will knit as a .html file. You will push your files into a public repository available from your Github account. You will share with me be email [vianneydenis@g.ntu.edu.tw] the address (URL) of this repository (such as https://github.com/vianneydenis/OCEAN5098.git) before next Monday in order for me to check your work. The title of your email should be Practice 2.2 (your name: your student no.). 
