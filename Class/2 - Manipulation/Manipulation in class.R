@@ -39,6 +39,8 @@ setosa<-iris$Species=="setosa"
 setosaDF<-iris[setosa,]
 str(setosaDF)
 
+setosa<-iris$Species=="setosa" #filter
+setosaDF<-iris[setosa,]
 versicolor<-iris$Species=="versicolor"
 VersiDF<-iris[versicolor,]
 
@@ -48,12 +50,14 @@ str(VirginicaDF)
 head(VirginicaDF)
 
 #sample
-
-
+sf<-sample(1:nrow(females),2) #selected girls
+females[sf,] #keep only data for selected girls
+sf
 #sorting
 
 ind1<-order(students$height)
-
+shoeorder<-order(-students$shoesize) #shoes filter decreasing order
+students[shoeorder,]
 
 #recoding
 
