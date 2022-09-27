@@ -1,4 +1,4 @@
-# class 3- dplyR & tidyR
+# class 3- dplyR
 
 rm(list=ls()) # clean memory
 
