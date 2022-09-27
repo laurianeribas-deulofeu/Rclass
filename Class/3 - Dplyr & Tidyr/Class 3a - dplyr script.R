@@ -83,7 +83,9 @@ gp.mean
 #pipe operator is becoming increasingly used in R.
 
 # Berrica's Question: forcing group order on a tibble object
-gp$Species<-factor(gp$Species, c("virginica", "setosa", "versicolor"))
+gp <- group_by(iris, Species) #"like applying a factor value"
+gp
+gp$Species<-factor(gp$Species, levels=c("virginica", "setosa", "versicolor"))
 arrangedb<-gp%>% arrange(Species, match(Species, Species))
 head(arrangedb)
 
