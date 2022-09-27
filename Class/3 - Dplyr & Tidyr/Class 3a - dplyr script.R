@@ -1,7 +1,7 @@
 # class 3- dplyR
 
 rm(list=ls()) # clean memory
-
+#install.packages(dplyr)
 library(dplyr)
 ?dplyr
 
@@ -31,7 +31,7 @@ head(selected4)
 
 #filter section (select 1category/value from one of your variable)
 filtered1 <- filter(iris, Species == "setosa" ) # replace the 2 step subsetting studied last week where you first create a filter (value/categorie of interrest assing with TRUe otherwise False), 
-  #then apply the filter to targetted dataframe (e,g. females<- students[f,] with f the filter for females students) 
+  #then apply the filter to targeted dataframe (e,g. females<- students[f,] with f the filter for females students) 
 head(filtered1,3)
 
 
@@ -61,7 +61,7 @@ head(arranged2)
 
 gp <- group_by(iris, Species) #"like applying a factor value"
 gp
-gp.mean <- summarise(gp,Mean.Sepal = mean(Sepal.Width))
+gp.mean <- summarise(gp,Mean.Sepal = mean(Sepal.Width), Mean.Petal=mean(Petal.Width))
 gp.mean
 
 #pipe operator
@@ -77,7 +77,6 @@ iris %>% filter(Species == "setosa",Sepal.Width > 3.8)
 iris  %>% group_by(Species) %>% summarise(Mean.Length = mean(Sepal.Length))
 # single line above does the same job that lines from previous section:
 gp <- group_by(iris, Species) #"like applying a factor value"
-gp
 gp.mean <- summarise(gp,Mean.Sepal = mean(Sepal.Width))
 gp.mean
 ###

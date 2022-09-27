@@ -4,7 +4,7 @@ rm(list=ls()) # clean memory
 library(tidyr)
 
 # 5 main categories for tidyr functions:
-    #1. pivotting-> table from wide to long format ( and reverse): extremely useful as ecological dateset often comes in wide format (each column= 1 variable) but ggplot2 (tidyverse too) requires long format, a lot of thing in python also comes in long format so extremely efficient if you have to work in both languages
+    #1. pivotting-> table from wide to long format ( and reverse): extremely useful as ecological dataset often comes in wide format (each column= 1 variable) but ggplot2 (tidyverse too) requires long format, a lot of thing in python also comes in long format so extremely efficient if you have to work in both languages
         #pivot_longer(), pivot_wider(), etc. SEE vignette("pivot")
     #2. rectangling-> for deeply nested list like JSON (e.g., geospatial analysis, modelling)  into tidy tibbles
     #3. nesting ->grouped data acan be stored into a single row ( or reversed)
@@ -41,7 +41,7 @@ income_long
 
 income_long %>% pivot_wider(names_from = c(gender,work_type), 
                             values_from = income,
-                            names_sep = ".")
+                            names_sep = "-")
 
 # Important properly chose your sep., to avoid future issues if later on you'll need to "pivot_longer" your table again.
 #e.g., the use of "-" might cause issues if you have composed name "Maine-USA", "Taipei-Taiwan"; "Ribas-Deulofeu" or here in my case as I use a "_" in the previous step 
@@ -64,13 +64,20 @@ income_sep <- income_long_var %>%  separate(col=var1, sep="_", into=c("gender", 
 head(income_sep)
 #respect the order in which your info appear in the column you wanna split in the way you order your "into" arguments.
 
-
+income_sep2 <- income %>%pivot_longer(cols = -1,names_to = "var1", values_to = "income") %>% 
+  separate(col=var1, sep="_", into=c("gender", "work_type"))
+income_sep3 <- income %>%pivot_longer(cols = -1,names_to = c("gender", "work_type"), values_to = "income", names_sep="_")
+head(income_sep)
 #rows version
 #instead of having your split column info organized in the wide direction (new columns for the split info= new variables),
 #you get the split info organize in row so in the case 8 rows per considered state as it will consider gender and work type separatly (as you can see each incomes values appears twice: once for the variable gender, and once for the variable work_time)
 
+
+income %>%pivot_longer(cols = -1,names_to = "var1", values_to = "income")  %>% separate_rows(var1, sep = "_")
+
+
 #many other functions, such as uncount
 df <- tibble(x = c("a", "b"), n = c(1, 2))
 uncount(df, n)
-uncount(df, n, .id = "id")
+uncount(df, n, .id = "indivual #")
 
