@@ -81,3 +81,10 @@ gp.mean <- summarise(gp,Mean.Sepal = mean(Sepal.Width))
 gp.mean
 ###
 #pipe operator is becoming increasingly used in R.
+
+# Berrica's Question: forcing group order on a tibble object
+gp$Species<-factor(gp$Species, c("virginica", "setosa", "versicolor"))
+arrangedb<-gp%>% arrange(Species, match(Species, Species))
+head(arrangedb)
+
+
